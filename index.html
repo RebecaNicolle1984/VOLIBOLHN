@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Voleibol Honduras</title>
+    <meta name="description" content="Información sobre el voleibol en Honduras">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ESTILOS GENERALES */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        body {
+            font-family: 'Open Sans', Arial, sans-serif;
+            color: #444;
+            background: #fff;
+            line-height: 1.7;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1170px;
+            margin: auto;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        section {
+            padding: 85px 0;
+        }
+
+        .section-title {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            text-align: center;
+            font-size: 36px;
+            color: #17243e;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .section-title span {
+            color: #1684c7;
+        }
+
+        .section-description {
+            max-width: 760px;
+            text-align: center;
+            margin: 0 auto 45px;
+            color: #777;
+            font-size: 15px;
+        }
+
+        /* MENÚ PRINCIPAL */
+
+        header {
+            background: #111d35;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, .2);
+        }
+
+        .navbar {
+            min-height: 76px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+        }
+
+        .logo {
+            color: #fff;
+            font-family: 'Oswald', sans-serif;
+            font-size: 25px;
+            font-weight: 700;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .logo span {
+            color: #f5c542;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-transform: uppercase;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: .6px;
+            transition: color .3s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a:focus {
+            color: #f5c542;
+        }
+
+        .menu-toggle {
+            display: none;
+            border: 0;
+            background: transparent;
+            color: white;
+            font-size: 29px;
+            cursor: pointer;
+        }
+
+        /* PORTADA */
+
+        .hero {
+            min-height: 650px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            color: #fff;
+
+            background:
+                linear-gradient(
+                    rgba(9, 22, 48, .78),
+                    rgba(12, 49, 88, .70)
+                ),
+                url("hn.png") center center / cover no-repeat;
+        }
+
+        .hero-content {
+            width: 90%;
+            max-width: 900px;
+            padding: 75px 0;
+            animation: aparecer 1s ease;
+        }
+
+        .hero-label {
+            color: #f5c542;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(48px, 7vw, 88px);
+            line-height: 1.12;
+            text-transform: uppercase;
+            margin: 22px 0;
+            font-weight: 700;
+        }
+
+        .hero h1 span {
+            color: #f5c542;
+        }
+
+        .hero p {
+            max-width: 720px;
+            margin: 0 auto 32px;
+            font-size: 17px;
+            color: #f0f4fa;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #1684c7;
+            color: #fff;
+            padding: 13px 30px;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: .7px;
+            border: 2px solid #1684c7;
+            transition: all .3s;
+        }
+
+        .btn:hover {
+            background: #f5c542;
+            color: #17243e;
+            border-color: #f5c542;
+        }
+
+        /* SECCIÓN VOLEIBOL */
+
+        .features {
+            background: #f5f7fa;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .feature-box {
+            background: #fff;
+            padding: 38px 28px;
+            text-align: center;
+            border-bottom: 3px solid #1684c7;
+            box-shadow: 0 4px 22px rgba(0, 0, 0, .06);
+            transition: transform .3s, box-shadow .3s;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, .12);
+        }
+
+        .feature-icon {
+            width: 76px;
+            height: 76px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 22px;
+            background: #e8f4fc;
+            color: #1684c7;
+            font-size: 34px;
+        }
+
+        .feature-box h3 {
+            font-family: 'Oswald', sans-serif;
+            color: #17243e;
+            font-size: 23px;
+            text-transform: uppercase;
+            margin-bottom: 13px;
+        }
+
+        .feature-box p {
+            color: #777;
+            font-size: 14px;
+        }
+
+        /* HISTORIA */
+
+        .history-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 55px;
+        }
+
+        .history-text h2 {
+            font-family: 'Oswald', sans-serif;
+            color: #17243e;
+            font-size: 38px;
+            line-height: 1.25;
+            text-transform: uppercase;
+            margin-bottom: 23px;
+        }
+
+        .history-text h2 span {
+            color: #1684c7;
+        }
+
+        .history-text p {
+            color: #737373;
+            font-size: 14px;
+            margin-bottom: 18px;
+        }
+
+        .history-image {
+            width: 100%;
+            height: 390px;
+            object-fit: cover;
+            box-shadow: 12px 12px 0 #1684c7;
+        }
+
+        /* GALERÍA */
+
+        .gallery {
+            background: #f5f7fa;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 25px;
+        }
+
+        .gallery-item {
+            height: 280px;
+            position: relative;
+            overflow: hidden;
+            background: #e2e8f0;
+            box-shadow: 0 5px 18px rgba(0, 0, 0, .1);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform .5s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.07);
+        }
+
+        /* FRASE DESTACADA */
+
+        .quote {
+            padding: 90px 20px;
+            text-align: center;
+            color: #fff;
+            background:
+                linear-gradient(
+                    rgba(12, 29, 59, .94),
+                    rgba(17, 82, 132, .91)
+                ),
+                url("hn.png") center / cover no-repeat;
+        }
+
+        .quote-mark {
+            color: #f5c542;
+            font-family: Georgia, serif;
+            font-size: 65px;
+            line-height: 1;
+        }
+
+        .quote blockquote {
+            max-width: 900px;
+            margin: 12px auto 25px;
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(25px, 4vw, 39px);
+            line-height: 1.45;
+        }
+
+        .quote p {
+            color: #f5c542;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+        }
+
+        /* PIE DE PÁGINA */
+
+        footer {
+            background: #0a1429;
+            color: #b9c4d6;
+            text-align: center;
+            padding: 30px 15px;
+            font-size: 12px;
+        }
+
+        footer strong {
+            color: #f5c542;
+        }
+
+        footer p + p {
+            margin-top: 6px;
+        }
+
+        /* ANIMACIÓN */
+
+        @keyframes aparecer {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* TABLET */
+
+        @media (max-width: 900px) {
+            .navbar {
+                min-height: 70px;
+            }
+
+            .nav-links {
+                gap: 15px;
+            }
+
+            .nav-links a {
+                font-size: 11px;
+            }
+
+            .feature-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .history-grid {
+                gap: 35px;
+            }
+
+            .history-image {
+                height: 330px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        /* CELULARES */
+
+        @media (max-width: 650px) {
+            .navbar {
+                flex-wrap: wrap;
+                padding: 17px 0;
+            }
+
+            .logo {
+                font-size: 22px;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0;
+                padding-top: 10px;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                border-top: 1px solid rgba(255, 255, 255, .1);
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 12px 0;
+                font-size: 12px;
+            }
+
+            .hero {
+                min-height: 530px;
+            }
+
+            .hero-content {
+                padding: 55px 0;
+            }
+
+            .hero-label {
+                font-size: 11px;
+                letter-spacing: 2px;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            section {
+                padding: 65px 0;
+            }
+
+            .section-title {
+                font-size: 30px;
+            }
+
+            .feature-grid,
+            .history-grid,
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-box {
+                padding: 32px 24px;
+            }
+
+            .history-text h2 {
+                font-size: 31px;
+            }
+
+            .history-image {
+                height: 280px;
+            }
+
+            .gallery-item {
+                height: 270px;
+            }
+
+            .quote {
+                padding: 70px 20px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: .01ms !important;
+                transition-duration: .01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- MENÚ PRINCIPAL -->
+
+    <header>
+        <div class="container navbar">
+
+            <a class="logo" href="#inicio">
+                VOLEIBOL <span>HONDURAS</span>
+            </a>
+
+            <button
+                class="menu-toggle"
+                id="menuToggle"
+                type="button"
+                aria-label="Abrir menú"
+                aria-expanded="false"
+                aria-controls="navLinks">
+                ☰
+            </button>
+
+            <nav aria-label="Navegación principal">
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#voleibol">Voleibol</a></li>
+                    <li><a href="#jugadores">Galería</a></li>
+                    <li><a href="#opiniones">Opiniones</a></li>
+                </ul>
+            </nav>
+
+        </div>
+    </header>
+
+    <main>
+
+        <!-- PORTADA -->
+
+        <section class="hero" id="inicio">
+            <div class="hero-content">
+
+                <span class="hero-label">
+                    Deporte · Disciplina · Unión
+                </span>
+
+                <h1>
+                  <span style="color: #ff00ff;">Voleibol en</span><br>
+
+                    <marquee behavior="scroll" direction="left" scrollamount="6"
+         style="background:#1EC6B6; color:#fff; font-size:20px; padding:8px;">
+                honduras 
+            </marquee>
+                </h1>
+
+                <p>
+                    Pasión por el voleibol hondureño. Un deporte que
+                    reúne talento, esfuerzo y trabajo en equipo dentro
+                    y fuera de la cancha.
+                </p>
+
+                <a class="btn" href="#voleibol">
+                    Conoce más
+                </a>
+
+            </div>
+        </section>
+
+        <!-- SOBRE EL VOLEIBOL -->
+
+        <section class="features" id="voleibol">
+            <div class="container">
+
+                <h2 class="section-title">
+                    Sobre el <span>voleibol</span>
+                </h2>
+
+                <p class="section-description">
+                    Conoce algunos aspectos importantes de este deporte
+                    y por qué la colaboración es clave para jugar en equipo.
+                </p>
+
+                <div class="feature-grid">
+
+                    <article class="feature-box">
+                        <div class="feature-icon" aria-hidden="true">
+                            🤝
+                        </div>
+
+                        <h3>Trabajo en equipo</h3>
+
+                        <p>
+                            La comunicación, la coordinación y la confianza
+                            permiten que cada integrante aporte al objetivo
+                            común.
+                        </p>
+                    </article>
+
+                    <article class="feature-box">
+                        <div class="feature-icon" aria-hidden="true">
+                            🏆
+                        </div>
+
+                        <h3>Competencia</h3>
+
+                        <p>
+                            Los equipos entrenan para participar en encuentros
+                            deportivos, aprender y demostrar sus habilidades.
+                        </p>
+                    </article>
+
+                    <article class="feature-box">
+                        <div class="feature-icon" aria-hidden="true">
+                            🏐
+                        </div>
+
+                        <h3>Técnica y disciplina</h3>
+
+                        <p>
+                            El saque, la recepción, la colocación, el remate
+                            y el bloqueo son técnicas fundamentales del voleibol.
+                        </p>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- HISTORIA -->
+
+        <section id="historia">
+            <div class="container history-grid">
+
+                <div class="history-text">
+
+                    <h2>
+                        Una historia de
+                        <span>pasión deportiva</span>
+                    </h2>
+
+                    <p>
+                        En Honduras, el voleibol se practica en centros
+                        educativos, clubes y comunidades. A través de los
+                        años, sus jugadores han encontrado en este deporte
+                        una oportunidad para desarrollar disciplina,
+                        compañerismo y espíritu competitivo.
+                    </p>
+
+                    <p>
+                        Más allá del resultado, cada partido es una
+                        oportunidad para aprender, superarse y representar
+                        con orgullo a su equipo.
+                    </p>
+
+                    <a class="btn" href="#jugadores">
+                        Ver galería
+                    </a>
+
+                </div>
+
+                <div>
+                    <img
+                        class="history-image"
+                        src="hn.png"
+                        alt="Imagen relacionada con Honduras"
+                        onerror="this.style.display='none'">
+                </div>
+
+            </div>
+        </section>
+
+        <!-- GALERÍA -->
+
+        <section class="gallery" id="jugadores">
+            <div class="container">
+
+                <h2 class="section-title">
+                    Voleibol <span>hondureño</span>
+                </h2>
+
+                <p class="section-description">
+                    Imágenes de apoyo para celebrar el deporte,
+                    sus equipos y la energía de la cancha.
+                </p>
+
+                <div class="gallery-grid">
+
+                    <div class="gallery-item">
+                        <img
+                            src="1.jpg"
+                            alt="Primera imagen de voleibol"
+                            loading="lazy"
+                            onerror="this.parentElement.style.display='none'">
+                    </div>
+
+                    <div class="gallery-item">
+                        <img
+                            src="2.jpg"
+                            alt="Segunda imagen de voleibol"
+                            loading="lazy"
+                            onerror="this.parentElement.style.display='none'">
+                    </div>
+
+                    <div class="gallery-item">
+                        <img
+                            src="history-strip.jpg"
+                            alt="Imagen deportiva de voleibol"
+                            loading="lazy"
+                            onerror="this.parentElement.style.display='none'">
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- OPINIONES -->
+
+        <section class="quote" id="opiniones">
+
+            <div class="quote-mark" aria-hidden="true">“</div>
+
+            <blockquote>
+                La pasión por el voleibol nos enseña disciplina,
+                respeto y la importancia de trabajar unidos.
+            </blockquote>
+
+            <p>Voleibol Honduras</p>
+
+        </section>
+
+    </main>
+
+    <!-- PIE DE PÁGINA -->
+
+    <footer>
+        <p>
+            <strong>Voleibol Honduras</strong>
+            · Deporte · Disciplina · Trabajo en equipo
+        </p>
+
+        <p>
+            © 2026 Voleibol Honduras. Todos los derechos reservados.
+        </p>
+    </footer>
+
+    <!-- MENÚ PARA CELULARES -->
+
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', function () {
+            const abierto = navLinks.classList.toggle('active');
+
+            menuToggle.setAttribute('aria-expanded', abierto);
+            menuToggle.setAttribute(
+                'aria-label',
+                abierto ? 'Cerrar menú' : 'Abrir menú'
+            );
+
+            menuToggle.textContent = abierto ? '✕' : '☰';
+        });
+
+        document.querySelectorAll('#navLinks a').forEach(function (enlace) {
+            enlace.addEventListener('click', function () {
+                navLinks.classList.remove('active');
+                menuToggle.setAttribute('aria-expanded', 'false');
+                menuToggle.setAttribute('aria-label', 'Abrir menú');
+                menuToggle.textContent = '☰';
+            });
+        });
+    </script>
+
+</body>
+</html>
+```
